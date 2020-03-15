@@ -1,58 +1,62 @@
-import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
-import './App.css';
+import React from "react";
+import { connect } from "react-redux";
+import { authenticate } from "./state/actions/auth";
+import { Route } from "react-router-dom";
+import Main from "./Main";
+import "./App.css";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <span>
-          <span>Learn </span>
-          <a
-            className="App-link"
-            href="https://reactjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux-toolkit.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux Toolkit
-          </a>
-          ,<span> and </span>
-          <a
-            className="App-link"
-            href="https://react-redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React Redux
-          </a>
-        </span>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      isLoggedIn: false
+    };
+  }
+
+  componentDidMount() {
+    if (this.state.isLoggedIn) {
+      console.log("logged in");
+    } else {
+      console.log("not logged in");
+    }
+  }
+
+  handleAuth = () => {
+    const { authenticate } = this.props;
+    authenticate();
+  };
+
+  render() {
+    return (
+      <div className="App">
+        <Route
+          path="/login"
+          exact
+          render={props => (
+            <>
+              <h1>Your Top Spotify</h1>
+              <button onClick={() => this.handleAuth()}>Log In</button>
+            </>
+          )}
+        />
+        <Route path="/" exact render={props => <Main {...props} />} />
+      </div>
+    );
+  }
 }
 
-export default App;
+const mapDispatchToProps = dispatch => {
+  return {
+    authenticate: () => {
+      return dispatch(authenticate());
+    },
+  }
+}
+
+const mapStateToProps = state => {
+  return {
+    auth: state.auth
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
