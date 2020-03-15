@@ -1,5 +1,7 @@
 import React from "react";
-import axios from "axios";
+import { connect } from "react-redux";
+import { fetchArtists } from "../state/actions/artists";
+import "./Main.css";
 
 const getTokenConfig = (hash, time) => ({
   token: hash.split("=")[1].split("&")[0],
@@ -16,17 +18,11 @@ class Main extends React.Component {
   }
 
   handleFetch = token => {
-    // const type = "artists";
-    // axios
-    //   .get(`https://api.spotify.com/v1/me/top/${type}`, {
-    //     headers: { Authorization: `Bearer ${token}` }
-    //   })
-    //   .then(res => console.log("spotify res", res));
+    this.props.fetchArtists(token);
   };
 
   componentDidMount() {
     const { hash } = this.props.location;
-    // const { token } = this.state;
     const date = new Date();
     const time = date.getTime();
     if (!!hash) {
@@ -34,6 +30,8 @@ class Main extends React.Component {
         "tokenConfig",
         JSON.stringify(getTokenConfig(hash, time))
       );
+      const { token } = getTokenConfig(hash);
+      this.handleFetch(token);
     } else if (!!localStorage.getItem("tokenConfig")) {
       const { token, expires } = JSON.parse(
         localStorage.getItem("tokenConfig")
@@ -47,18 +45,38 @@ class Main extends React.Component {
     }
   }
 
-  componentDidUpdate(pP, pS) {
-    console.log(pP, pS);
-  }
-
   render() {
-    console.log(this.state);
+    const { artists } = this.props;
     return (
       <div>
-        <h1>Welcome!</h1>
+        <h1 style={{ color: "#fff" }}>Your Top Spotify Artists</h1>
+        <section className="artist-cards-container">
+          {!!artists &&
+            !!artists.length &&
+            artists.map(artist => (
+              <div className="artist-card" key={artist.id}>
+                <img src={artist.images[2].url} alt="Artist" />
+                <h3>{artist.name}</h3>
+              </div>
+            ))}
+        </section>
       </div>
     );
   }
 }
 
-export default Main;
+const mapDispatchToProps = dispatch => {
+  return {
+    fetchArtists: token => {
+      return dispatch(fetchArtists(token));
+    }
+  };
+};
+
+const mapStateToProps = state => {
+  return {
+    artists: state.artists.artists
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Main);

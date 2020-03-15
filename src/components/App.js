@@ -14,14 +14,6 @@ class App extends React.Component {
     };
   }
 
-  componentDidMount() {
-    if (this.state.isLoggedIn) {
-      console.log("logged in");
-    } else {
-      console.log("not logged in");
-    }
-  }
-
   handleAuth = () => {
     const { authenticate } = this.props;
     authenticate();
