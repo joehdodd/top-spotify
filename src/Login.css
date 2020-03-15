@@ -1,0 +1,23 @@
+.login-wrapper {
+}
+
+.login-container {
+  color: #fff;
+  background-color: #282828;
+  width: 25%;
+  margin: 15% auto;
+  padding: 32px;
+  border-radius: 8px;
+}
+
+.login-title-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0px 0px 32px 0px;
+}
+
+.spotify-logo-login {
+  max-width: 25%;
+  margin-right: 18px;
+}
