@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { authenticate } from "../state/actions/auth";
 import "./Login.css";
 
-const spotifyLogo = require("./assets/Spotify_Icon_RGB_White.png");
+const spotifyLogo = require("../assets/Spotify_Icon_RGB_White.png");
 
 class Login extends React.Component {
   constructor(props) {
