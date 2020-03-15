@@ -1,4 +1,6 @@
 import React from "react";
+import { connect } from "react-redux";
+import { authenticate } from "./state/actions/auth";
 import "./Login.css";
 
 const spotifyLogo = require("./assets/Spotify_Icon_RGB_White.png");
@@ -8,6 +10,10 @@ class Login extends React.Component {
     super(props);
     this.state = {};
   }
+  handleAuth = () => {
+    const { authenticate } = this.props;
+    authenticate();
+  };
   render() {
     return (
       <div className="login-container">
@@ -25,4 +31,18 @@ class Login extends React.Component {
   }
 }
 
-export default Login;
+const mapDispatchToProps = dispatch => {
+  return {
+    authenticate: () => {
+      return dispatch(authenticate());
+    }
+  };
+};
+
+const mapStateToProps = state => {
+  return {
+    auth: state.auth
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
