@@ -1,0 +1,16 @@
+.artist-hero-container {
+    height: 275px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    text-align: left;
+    padding: 16px;
+    align-items: flex-end;
+    display: grid;
+}
+
+.artist-hero-container h1 {
+    font-size: 64px;
+    margin: 0;
+    line-height: 0;
+}

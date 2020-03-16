@@ -1,10 +1,18 @@
 import React from "react";
 import { connect } from "react-redux";
 import { authenticate } from "../state/actions/auth";
-import { Route } from "react-router-dom";
+import { Route, Link } from "react-router-dom";
+import SideBar from "./SideBar";
 import Login from "./Login";
-import Main from "./Main";
+import ArtistsContainer from "./ArtistsContainer";
+import ArtistContainer from "./ArtistContainer";
 import "./App.css";
+
+
+
+const MainContainer = props => (
+  <div className="main-container">{props.children}</div>
+);
 
 class App extends React.Component {
   constructor() {
@@ -18,7 +26,26 @@ class App extends React.Component {
     return (
       <div className="App">
         <Route path="/login" exact render={props => <Login {...props} />} />
-        <Route path="/" exact render={props => <Main {...props} />} />
+        <Route
+          path="/artists"
+          exact
+          render={props => (
+            <MainContainer>
+              <SideBar />
+              <ArtistsContainer {...props} />
+            </MainContainer>
+          )}
+        />
+        <Route
+          path="/artist/:artistId"
+          exact
+          render={props => (
+            <MainContainer>
+              <SideBar />
+              <ArtistContainer {...props} />
+            </MainContainer>
+          )}
+        />
       </div>
     );
   }

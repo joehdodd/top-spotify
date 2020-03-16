@@ -1,16 +1,30 @@
 import React from "react";
+import { Link, Route } from "react-router-dom";
 import { connect } from "react-redux";
 import { fetchArtists } from "../state/actions/artists";
-import "./Main.css";
+import "./Artists.css";
 
-const spotifyLogo = require("../assets/Spotify_Icon_RGB_White.png");
+const Artists = ({ artists }) => {
+  return (
+    <>
+      {artists.map(artist => (
+        <div className="artist-card" key={artist.id}>
+          <Link to={`/artist/${artist.id}`}>
+            <img src={artist.images[2].url} alt="Artist" />
+            <h3>{artist.name}</h3>
+          </Link>
+        </div>
+      ))}
+    </>
+  );
+};
 
 const getTokenConfig = (hash, time) => ({
   token: hash.split("=")[1].split("&")[0],
   expires: time + hash.split("=")[3] * 1000
 });
 
-class Main extends React.Component {
+class ArtistsContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -49,30 +63,16 @@ class Main extends React.Component {
 
   componentDidUpdate(pP) {
     if (!pP.fetchError && !!this.props.fetchError) {
-      this.props.history.push("/login")
+      this.props.history.push("/login");
     }
   }
 
   render() {
     const { artists } = this.props;
     return (
-      <div className="main-container">
-        <header>
-          <img
-            src={spotifyLogo}
-            alt="Spotify Logo"
-          />
-          <h1>Top Spotify</h1>
-        </header>
+      <div className="artists-cards-wrapper">
         <section className="artist-cards-container">
-          {!!artists &&
-            !!artists.length &&
-            artists.map(artist => (
-              <div className="artist-card" key={artist.id}>
-                <img src={artist.images[2].url} alt="Artist" />
-                <h3>{artist.name}</h3>
-              </div>
-            ))}
+          {!!artists && !!artists.length && <Artists artists={artists} />}
         </section>
       </div>
     );
@@ -94,4 +94,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Main);
+export default connect(mapStateToProps, mapDispatchToProps)(ArtistsContainer);
