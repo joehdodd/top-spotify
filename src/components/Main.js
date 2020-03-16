@@ -47,6 +47,12 @@ class Main extends React.Component {
     }
   }
 
+  componentDidUpdate(pP) {
+    if (!pP.fetchError && !!this.props.fetchError) {
+      this.props.history.push("/login")
+    }
+  }
+
   render() {
     const { artists } = this.props;
     return (
@@ -83,7 +89,8 @@ const mapDispatchToProps = dispatch => {
 
 const mapStateToProps = state => {
   return {
-    artists: state.artists.artists
+    artists: state.artists.artists,
+    fetchError: state.artists.fetchArtistsError
   };
 };
 
