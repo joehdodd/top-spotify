@@ -17,6 +17,6 @@ export const authenticate = () => {
       (scopes ? "&scope=" + encodeURIComponent(scopes) : "") +
       "&redirect_uri=" +
       encodeURIComponent("http://localhost:3000/");
-    window.open(URI);
+    window.open(URI, "_self");
   };
 };

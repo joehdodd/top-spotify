@@ -14,11 +14,6 @@ class App extends React.Component {
     };
   }
 
-  handleAuth = () => {
-    const { authenticate } = this.props;
-    authenticate();
-  };
-
   render() {
     return (
       <div className="App">

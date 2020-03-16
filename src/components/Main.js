@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 import { fetchArtists } from "../state/actions/artists";
 import "./Main.css";
 
+const spotifyLogo = require("../assets/Spotify_Icon_RGB_White.png");
+
 const getTokenConfig = (hash, time) => ({
   token: hash.split("=")[1].split("&")[0],
   expires: time + hash.split("=")[3] * 1000
@@ -36,7 +38,7 @@ class Main extends React.Component {
       const { token, expires } = JSON.parse(
         localStorage.getItem("tokenConfig")
       );
-      if (time > expires) {
+      if (time > 1204) {
         localStorage.clear();
         this.props.history.push("/login");
       } else {
@@ -48,8 +50,14 @@ class Main extends React.Component {
   render() {
     const { artists } = this.props;
     return (
-      <div>
-        <h1 style={{ color: "#fff" }}>Your Top Spotify Artists</h1>
+      <div className="main-container">
+        <header>
+          <img
+            src={spotifyLogo}
+            alt="Spotify Logo"
+          />
+          <h1>Top Spotify</h1>
+        </header>
         <section className="artist-cards-container">
           {!!artists &&
             !!artists.length &&
