@@ -28,7 +28,7 @@ export const authenticate = () => {
       process.env.REACT_APP_SPOTIFY_CLIENT_ID +
       (scopes ? "&scope=" + encodeURIComponent(scopes) : "") +
       "&redirect_uri=" +
-      encodeURIComponent("http://localhost:3000/artists");
+      encodeURIComponent("http://localhost:3000/");
     window.open(URI, "_self");
   };
 };
