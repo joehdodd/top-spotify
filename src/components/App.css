@@ -1,5 +1,54 @@
+.main-container {
+  display: grid;
+  grid-template-columns: 0.75fr 4fr;
+  color: #fff;
+  background-color: #111111;
+  height: 100%;
+}
+
+header {
+  align-self: baseline;
+  display: grid;
+  grid-gap: 8px;
+  color: #fff;
+  grid-template-columns: 0.25fr 1fr;
+  align-items: center;
+  padding: 16px;
+}
+
+header img {
+  max-width: 50px;
+}
+
+header h1 {
+  font-size: 18px;
+  justify-self: baseline;
+}
+
+nav {
+  display: grid;
+  height: 100%;
+  padding: 0px 16px;
+}
+
+nav a {
+  height: 25px;
+  max-width: 100%;
+  background-color: #282828;
+  padding: 8px;
+  border-radius: 8px;
+  color: #fff;
+  text-decoration: none;
+  align-items: center;
+  display: grid;
+  font-size: 20px;
+  font-weight: bold;
+  justify-content: center;
+}
+
 .App {
   text-align: center;
+  height: 100%;
 }
 
 .App-logo {
@@ -31,9 +80,9 @@
     transform: translateY(0);
   }
   50% {
-    transform: translateY(10px)
+    transform: translateY(10px);
   }
   100% {
-    transform: translateY(0px)
+    transform: translateY(0px);
   }
 }
