@@ -1,7 +1,19 @@
+const getTokenConfig = (hash, time) => ({
+  token: hash.split("=")[1].split("&")[0],
+  expires: time + hash.split("=")[3] * 1000
+});
+
 function authenticating(bool) {
   return {
     type: "AUTHENTICATING",
     bool
+  };
+}
+
+function setTokenConfig(config) {
+  return {
+    type: "SET_TOKEN_CONFIG",
+    config
   };
 }
 
@@ -18,5 +30,30 @@ export const authenticate = () => {
       "&redirect_uri=" +
       encodeURIComponent("http://localhost:3000/artists");
     window.open(URI, "_self");
+  };
+};
+
+export const setAuth = hash => {
+  return dispatch => {
+    const date = new Date();
+    const time = date.getTime();
+    if (!!hash) {
+      localStorage.setItem(
+        "tokenConfig",
+        JSON.stringify(getTokenConfig(hash, time))
+      );
+      dispatch(setTokenConfig(getTokenConfig(hash, time)));
+    } else if (!!localStorage.getItem("tokenConfig")) {
+      const { token, expires } = JSON.parse(
+        localStorage.getItem("tokenConfig")
+      );
+      dispatch(setTokenConfig({ token, expires }));
+      // if (time > expires) {
+      //   localStorage.clear();
+      //   this.props.history.push("/login");
+      // } else {
+      //   this.handleFetch(token);
+      // }
+    }
   };
 };

@@ -2,7 +2,8 @@ const initialState = {
   fetchingArtists: false,
   fetchArtistsError: false,
   fetchArtistsErrorMsg: null,
-  artists: []
+  artists: [],
+  artist: null
 };
 
 export default function artistsReducer(state = initialState, action) {
@@ -24,6 +25,11 @@ export default function artistsReducer(state = initialState, action) {
         artists: [...action.artists],
         fetchingArtists: false,
         fetchArtistsError: false
+      };
+    case "SET_ARTIST":
+      return {
+        ...state,
+        artist: action.artist
       };
     default:
       return state;

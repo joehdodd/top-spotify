@@ -11,8 +11,8 @@ export default props => (
       <h1>Top Spotify</h1>
     </header>
     <nav>
-      <Link to="/artists" exact>
-        Artists
+      <Link to="/" exact>
+        Home
       </Link>
     </nav>
   </div>
