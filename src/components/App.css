@@ -4,7 +4,7 @@
   grid-gap: 8px;
   color: #fff;
   background-color: #111111;
-  height: 85%;
+  height: 100%;
 }
 
 header {
@@ -56,6 +56,5 @@ nav a {
   .main-container {
     grid-template-columns: 0.75fr 4fr;
     grid-template-rows: none;
-    height: 100%;
   }
 }
