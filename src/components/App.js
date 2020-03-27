@@ -5,6 +5,7 @@ import { Route, Switch } from "react-router-dom";
 import AuthContainer from "./AuthContainer";
 import SideBar from "./SideBar";
 import Login from "./Login";
+import InsightsContainer from "./Insights/InsightsContainer";
 import ArtistsContainer from "./Artists/ArtistsContainer";
 import ArtistContainer from "./Artists/ArtistContainer";
 import "./App.css";
@@ -12,6 +13,20 @@ import "./App.css";
 const MainContainer = props => (
   <div className="main-container">{props.children}</div>
 );
+
+// const ArtistsAuthContainer = props => {
+//   return (
+//     <AuthContainer {...props}>
+//       <MainContainer>
+//         <SideBar />
+//         <div>
+//           <InsightsContainer {...props} />
+//           <ArtistsContainer {...props} />
+//         </div>
+//       </MainContainer>
+//     </AuthContainer>
+//   );
+// };
 
 const ArtistsAuthContainer = props => {
   return (

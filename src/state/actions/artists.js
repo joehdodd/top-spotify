@@ -33,7 +33,7 @@ export const fetchArtists = () => {
     const { token } = getState().auth.tokenConfig;
     const type = "artists";
     axios
-      .get(`https://api.spotify.com/v1/me/top/${type}`, {
+      .get(`https://api.spotify.com/v1/me/top/${type}?time_range=long_term`, {
         headers: { Authorization: `Bearer ${token}` }
       })
       .then(res => dispatch(setArtists(res.data.items)))
