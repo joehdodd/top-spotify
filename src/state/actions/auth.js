@@ -22,7 +22,7 @@ export const authenticate = () => {
     dispatch(authenticating(true));
     const scopes = "user-read-private user-read-email user-top-read";
     const redirectURL =
-      process.env.NODE_ENV === "production"
+      process.env.REACT_APP_NODE_ENV === "production"
         ? "https://your-top-spotify.herokuapp.com/"
         : "http://localhost:3000/";
     const URI =
