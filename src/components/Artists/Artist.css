@@ -1,3 +1,7 @@
+.artist-container {
+  overflow-y: scroll;
+}
+
 .artist-hero-container {
   height: 175px;
   background-repeat: no-repeat;
@@ -23,7 +27,6 @@
 .artist-info-wrapper {
   overflow-y: scroll;
   margin-top: 32px;
-  height: calc(100vh - 239px);
 }
 
 .artist-info-container {
@@ -55,6 +58,10 @@
 }
 
 @media screen and (min-width: 768px) {
+  .artist-container {
+    overflow: hidden;
+  }
+
   .artist-hero-container h1 {
     font-size: 64px;
   }
@@ -65,5 +72,9 @@
 
   .artist-album-container {
     grid-template-columns: repeat(4, 1fr);
+  }
+
+  .artist-info-wrapper {
+    height: calc(100vh - 239px);
   }
 }

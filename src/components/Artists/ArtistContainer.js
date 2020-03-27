@@ -27,7 +27,7 @@ class ArtistContainer extends React.Component {
     const { artistInit, artist, artistAlbums } = this.props;
     console.log("artist", artistAlbums);
     return (
-      <section>
+      <section className="artist-container">
         <div
           className="artist-hero-container"
           style={{
