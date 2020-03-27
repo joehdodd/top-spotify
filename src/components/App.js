@@ -13,34 +13,43 @@ const MainContainer = props => (
   <div className="main-container">{props.children}</div>
 );
 
+const ArtistsAuthContainer = props => {
+  return (
+    <AuthContainer {...props}>
+      <MainContainer>
+        <SideBar />
+        <ArtistsContainer {...props} />
+      </MainContainer>
+    </AuthContainer>
+  );
+};
+
+const ArtistAuthContainer = props => {
+  return (
+    <AuthContainer {...props}>
+      <MainContainer>
+        <SideBar />
+        <ArtistContainer {...props} />
+      </MainContainer>
+    </AuthContainer>
+  );
+};
+
 class App extends React.Component {
   render() {
     return (
       <div className="App">
         <Switch>
-          <Route path="/login" exact render={props => <Login {...props} />} />
-          <AuthContainer>
-            <Route
-              path="/"
-              exact
-              render={props => (
-                <MainContainer>
-                  <SideBar />
-                  <ArtistsContainer {...props} />
-                </MainContainer>
-              )}
-            />
-            <Route
-              path="/artist/:artistId"
-              exact
-              render={props => (
-                <MainContainer>
-                  <SideBar />
-                  <ArtistContainer {...props} />
-                </MainContainer>
-              )}
-            />
-          </AuthContainer>
+          <Route
+            path="/artist/:artistId"
+            render={props => <ArtistAuthContainer {...props} />}
+          />
+          <Route
+            path="/"
+            exact
+            render={props => <ArtistsAuthContainer {...props} />}
+          />
+          <Route path="/login" render={props => <Login {...props} />} />
         </Switch>
       </div>
     );

@@ -30,7 +30,7 @@ function fetchArtistError(error) {
 
 export const fetchArtists = () => {
   return (dispatch, getState) => {
-    const {token } = getState().auth.tokenConfig;
+    const { token } = getState().auth.tokenConfig;
     const type = "artists";
     axios
       .get(`https://api.spotify.com/v1/me/top/${type}`, {
@@ -50,5 +50,11 @@ export const fetchArtist = artistId => {
       })
       .then(res => dispatch(setArtist(res.data)))
       .catch(res => dispatch(fetchArtistError(res)));
+  };
+};
+
+export const clearSelectedArtist = () => {
+  return dispatch => {
+    return dispatch(setArtist(null));
   };
 };

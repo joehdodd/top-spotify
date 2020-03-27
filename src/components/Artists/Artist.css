@@ -1,21 +1,55 @@
 .artist-hero-container {
-    height: 275px;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: 50%;
-    text-align: left;
-    padding: 16px;
-    align-items: flex-end;
-    display: grid;
+  height: 175px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50%;
+  text-align: left;
+  padding: 16px;
+  align-items: flex-end;
+  display: grid;
 }
 
 .artist-hero-container h1 {
-    font-size: 64px;
-    margin: 0;
-    line-height: 0;
+  font-size: 64px;
+  margin: 0;
+  line-height: 0;
 }
 
 .artist-hero-container a {
-    text-decoration: none;
-    color: #fff;
+  text-decoration: none;
+  color: #fff;
+}
+
+.artist-info-wrapper {
+  overflow-y: scroll;
+  margin-top: 32px;
+  height: calc(100vh - 239px);
+}
+
+.artist-info-container {
+  padding: 0px 16px 32px 16px;
+}
+
+.artist-album-container {
+  display: grid;
+  grid-gap: 16px;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.artist-album-card {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: grid;
+  align-items: flex-end;
+  height: 100px;
+}
+
+.artist-album-card h3 {
+  margin: 0;
+  color: #fff;
+}
+
+.artist-album-card a {
+  text-decoration: none;
 }
