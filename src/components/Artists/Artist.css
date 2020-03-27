@@ -10,7 +10,7 @@
 }
 
 .artist-hero-container h1 {
-  font-size: 64px;
+  font-size: 24px;
   margin: 0;
   line-height: 0;
 }
@@ -27,13 +27,13 @@
 }
 
 .artist-info-container {
-  padding: 0px 16px 32px 16px;
+  padding: 8px;
 }
 
 .artist-album-container {
   display: grid;
   grid-gap: 16px;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
 }
 
 .artist-album-card {
@@ -52,4 +52,18 @@
 
 .artist-album-card a {
   text-decoration: none;
+}
+
+@media screen and (min-width: 768px) {
+  .artist-hero-container h1 {
+    font-size: 64px;
+  }
+
+  .artist-info-container {
+    padding: 0px 16px 32px 16px;
+  }
+
+  .artist-album-container {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
