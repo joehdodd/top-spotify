@@ -21,6 +21,10 @@ export const authenticate = () => {
   return dispatch => {
     dispatch(authenticating(true));
     const scopes = "user-read-private user-read-email user-top-read";
+    const redirectURL =
+      process.env.NODE_ENV === "production"
+        ? "https://your-top-spotify.herokuapp.com/"
+        : "http://localhost:3000/";
     const URI =
       "https://accounts.spotify.com/authorize" +
       "?response_type=token" +
@@ -28,7 +32,7 @@ export const authenticate = () => {
       process.env.REACT_APP_SPOTIFY_CLIENT_ID +
       (scopes ? "&scope=" + encodeURIComponent(scopes) : "") +
       "&redirect_uri=" +
-      encodeURIComponent("http://localhost:3000/");
+      encodeURIComponent(redirectURL);
     window.open(URI, "_self");
   };
 };
