@@ -3,7 +3,7 @@
 }
 
 .artist-cards-container {
-  padding: 8px;
+  padding: 8px 8px 56px 8px;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(4, 1fr);
@@ -34,5 +34,6 @@
     grid-template-columns: repeat(6, 1fr);
     grid-template-rows: repeat(4, 1fr);
     grid-gap: 16px;
+    padding: 8px;
   }
 }
