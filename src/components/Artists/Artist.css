@@ -30,7 +30,7 @@
 }
 
 .artist-info-container {
-  padding: 8px 8px 74px 8px;
+  padding: 8px;
 }
 
 .artist-album-container {
@@ -64,10 +64,6 @@
 
   .artist-hero-container h1 {
     font-size: 64px;
-  }
-
-  .artist-info-container {
-    padding: 8px;
   }
 
   .artist-album-container {

@@ -1,6 +1,6 @@
 .main-container {
   display: grid;
-  grid-template-rows: 0.75fr 4fr;
+
   grid-gap: 8px;
   color: #fff;
   background-color: #111111;
@@ -50,6 +50,12 @@ nav a {
 .App {
   text-align: center;
   height: 100%;
+}
+
+@media screen and (min-height: 813px) {
+  .main-container {
+    grid-template-rows: 0.75fr 4fr;
+  }
 }
 
 @media screen and (min-width: 768px) {
