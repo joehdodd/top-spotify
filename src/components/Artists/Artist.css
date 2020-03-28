@@ -30,7 +30,7 @@
 }
 
 .artist-info-container {
-  padding: 8px 8px 56px 8px;
+  padding: 8px 8px 74px 8px;
 }
 
 .artist-album-container {
@@ -67,7 +67,7 @@
   }
 
   .artist-info-container {
-    padding: 0px 16px 32px 16px;
+    padding: 8px;
   }
 
   .artist-album-container {
